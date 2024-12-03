@@ -181,3 +181,195 @@ public class Main {
 - **Access Control**: Uses private variables with public methods (getters and setters) to control access and modification.
 
 
+## **Constructors**
+
+A constructor is a special method in a class that is called when an object of the class is created. It is used to initialize objects. Constructors can be categorized into three types:
+
+### **1. Default Constructor (Non-Parameterized Constructor)**
+A default constructor does not take any parameters. If no constructor is defined, Java provides a default constructor automatically, which initializes object attributes to their default values.
+
+#### **Example Code: Default Constructor**
+```java
+class Dog {
+    String name;
+    int age;
+
+    // Default constructor
+    Dog() {
+        name = "Unknown"; // Default value for name
+        age = 0;          // Default value for age
+    }
+
+    void displayInfo() {
+        System.out.println("Dog Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog1 = new Dog(); // Calls default constructor
+        dog1.displayInfo(); // Output: Dog Name: Unknown, Age: 0
+    }
+}
+```
+
+### **2. Parameterized Constructor**
+A parameterized constructor allows you to initialize an object with specific values by accepting parameters.
+
+#### **Example Code: Parameterized Constructor**
+```java
+class Dog {
+    String name;
+    int age;
+
+    // Parameterized constructor
+    Dog(String name, int age) {
+        this.name = name; // Using 'this' to distinguish instance variable
+        this.age = age;
+    }
+
+    void displayInfo() {
+        System.out.println("Dog Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog2 = new Dog("Buddy", 3); // Calls parameterized constructor
+        dog2.displayInfo(); // Output: Dog Name: Buddy, Age: 3
+    }
+}
+```
+
+### **3. Copy Constructor**
+A copy constructor creates a new object as a copy of an existing object. It typically takes another object of the same class as a parameter.
+
+#### **Example Code: Copy Constructor**
+```java
+class Dog {
+    String name;
+    int age;
+
+    // Parameterized constructor
+    Dog(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Copy constructor
+    Dog(Dog another) {
+        this.name = another.name; // Copying values from the existing object
+        this.age = another.age;
+    }
+
+    void displayInfo() {
+        System.out.println("Dog Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog3 = new Dog("Max", 5); // Original object
+        dog3.displayInfo(); // Output: Dog Name: Max, Age: 5
+
+        Dog dog4 = new Dog(dog3); // Calls copy constructor
+        dog4.displayInfo(); // Output: Dog Name: Max, Age: 5
+    }
+}
+```
+
+
+- **Default Constructor (Non-Parameterized)**: Initializes object with default values; no parameters.
+- **Parameterized Constructor**: Initializes object with specific values; takes parameters.
+- **Copy Constructor**: Initializes a new object as a copy of an existing object; takes another object of the same class as a parameter.
+
+
+### **Constructor Overloading**  
+Constructor overloading occurs when a class has multiple constructors with different parameters. This allows for creating objects in different ways.
+
+#### **Example Code: Constructor Overloading**  
+```java
+class Rectangle {
+    int length;
+    int width;
+
+    // Constructor with no parameters
+    Rectangle() {
+        length = 1;
+        width = 1;
+    }
+
+    // Constructor with one parameter
+    Rectangle(int side) {
+        length = side;
+        width = side; // Square
+    }
+
+    // Constructor with two parameters
+    Rectangle(int length, int width) {
+        this.length = length; // Using 'this' to distinguish between parameters and instance variables
+        this.width = width;
+    }
+
+    void displayInfo() {
+        System.out.println("Length: " + length + ", Width: " + width);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Rectangle rect1 = new Rectangle(); // Calls constructor with no parameters
+        rect1.displayInfo(); // Output: Length: 1, Width: 1
+
+        Rectangle rect2 = new Rectangle(5); // Calls constructor with one parameter
+        rect2.displayInfo(); // Output: Length: 5, Width: 5
+
+        Rectangle rect3 = new Rectangle(4, 6); // Calls constructor with two parameters
+        rect3.displayInfo(); // Output: Length: 4, Width: 6
+    }
+}
+```
+
+
+### **This Pointer**  
+The `this` keyword is a reference to the current object in a method or constructor. It is used to distinguish between instance variables and parameters with the same name and can also be used to call other constructors.
+
+#### **Example Code: Using `this` Pointer**  
+```java
+class Person {
+    private String name;
+    private int age;
+
+    // Parameterized constructor
+    Person(String name, int age) {
+        this.name = name; // 'this' distinguishes instance variable from parameter
+        this.age = age;
+    }
+
+    // Method to display info
+    void displayInfo() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+
+    // Method to demonstrate 'this' in method
+    void updateName(String name) {
+        this.name = name; // 'this' refers to the instance variable
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("Alice", 25);
+        person.displayInfo(); // Output: Name: Alice, Age: 25
+
+        person.updateName("Bob"); // Update name using method
+        person.displayInfo(); // Output: Name: Bob, Age: 25
+    }
+}
+```
+
+
+- **Constructor Overloading**: Multiple constructors with different parameters.
+- **This Pointer**: Refers to the current object, used to differentiate between instance variables and parameters or to invoke other constructors.
+
+This overview provides a clear understanding of constructors, constructor overloading, and the `this` pointer, with practical examples for better comprehension.
