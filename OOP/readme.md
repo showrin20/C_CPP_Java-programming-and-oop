@@ -4,7 +4,7 @@
 OOP is a programming paradigm that uses "objects" to represent data and methods to manipulate that data.
 
 
-### **1. Class & Object**  
+## **1. Class & Object**  
 A **class** is a blueprint for creating objects, and an **object** is an instance of a class.
 
 #### **Example Code: Class and Object**  
@@ -34,7 +34,7 @@ public class Main {
 ```
 
 
-### **2. Access Specifiers**  
+## **2. Access Specifiers**  
 Access specifiers control the visibility of classes, methods, and variables. The main access specifiers in Java are `public`, `protected`, `private`, and package-private (default).
 
 - **Public**: Accessible from anywhere in the program.
@@ -102,5 +102,82 @@ public class Main {
 
 - **Getters**: Methods that allow access to private variables.
 - **Setters**: Methods that allow modification of private variables.
-- **Encapsulation**: A key principle in OOP that restricts direct access to some of an object’s components, promoting data protection.
+
+
+## **Encapsulation**  
+Encapsulation is an OOP principle that combines data (attributes) and methods (functions) that operate on the data into a single unit called a class. It restricts direct access to some of the object's components, which is a means of protecting the integrity of the data.
+
+### **Data Hiding**  
+Data hiding is the practice of restricting access to the internal state of an object, allowing only controlled access through public methods (getters and setters). This promotes better maintainability and reduces the risk of unintended interference.
+
+#### **Example Code: Encapsulation and Data Hiding**  
+```java
+class BankAccount {
+    private String accountNumber; // Data hiding: accountNumber is private
+    private double balance;        // Data hiding: balance is private
+
+    // Constructor
+    public BankAccount(String accountNumber, double initialBalance) {
+        this.accountNumber = accountNumber;
+        this.balance = initialBalance;
+    }
+
+    // Getter for accountNumber
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    // Getter for balance
+    public double getBalance() {
+        return balance;
+    }
+
+    // Method to deposit money
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount; // Modify balance using a method
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+
+    // Method to withdraw money
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount; // Modify balance using a method
+            System.out.println("Withdrew: " + amount);
+        } else {
+            System.out.println("Invalid withdrawal amount.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount("12345", 1000.00);
+        
+        // Accessing account information through getters
+        System.out.println("Account Number: " + account.getAccountNumber());
+        System.out.println("Initial Balance: " + account.getBalance());
+
+        // Performing operations on the account
+        account.deposit(500.00); // Output: Deposited: 500.0
+        System.out.println("Updated Balance: " + account.getBalance()); // Output: Updated Balance: 1500.0
+        
+        account.withdraw(200.00); // Output: Withdrew: 200.0
+        System.out.println("Final Balance: " + account.getBalance()); // Output: Final Balance: 1300.0
+
+        // Attempting direct access to private variable (will cause an error)
+        // System.out.println(account.balance); // Error: balance has private access in BankAccount
+    }
+}
+```
+
+
+
+- **Encapsulation**: Bundles data and methods into a single unit (class).
+- **Data Hiding**: Restricts direct access to class variables, promoting data integrity and security.
+- **Access Control**: Uses private variables with public methods (getters and setters) to control access and modification.
+
 
