@@ -1,6 +1,8 @@
 
 
 # **Object-Oriented Programming (OOP)**  
+![oop.gif](oop.gif)
+
 OOP is a programming paradigm that uses "objects" to represent data and methods to manipulate that data.
 
 
