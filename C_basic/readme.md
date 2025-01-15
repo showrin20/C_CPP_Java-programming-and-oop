@@ -94,22 +94,3 @@ int main() {
     return 0;
 }
 ```
-
-
-
-## 🚀 Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/c-programming-basics.git
-   ```
-2. Navigate to the folder:
-   ```bash
-   cd c-programming-basics
-   ```
-3. Compile and run any example using GCC:
-   ```bash
-   gcc example.c -o example
-   ./example
-   ```
-
