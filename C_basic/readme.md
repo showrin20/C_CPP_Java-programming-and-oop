@@ -12,7 +12,6 @@
 |                      | `short`      | Short integer                                | `short s = 1000;`                          | 2 bytes          |
 |                      | `long`       | Long integer                                 | `long big = 1000000L;`                     | 4 or 8 bytes     |
 |                      | `bool`       | Boolean (true/false, from `<stdbool.h>`)     | `bool flag = true;`                        | 1 byte           |
-| -------------------- | ------------ | -------------------------------------------- | ------------------------------------       | ---------------- |
 | 🔸 Non-Primitive     | `array`      | Collection of elements of same type          | `int a[5] = {1, 2, 3, 4, 5};`              | Depends on size  |
 |                      | `pointer`    | Stores address of another variable           | `int *p = &a;`                             | 4 or 8 bytes     |
 |                      | `struct`     | Group of different data types                | `struct Person {int age; char name[20];};` | Varies           |
